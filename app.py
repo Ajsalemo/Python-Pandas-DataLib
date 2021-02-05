@@ -14,6 +14,7 @@ def index():
     return json.loads(f)
 
 
+# List all stations under the column Name
 @app.route('/station_names')
 def station_names():
     # Filter the DataFrame columns to retrieve all stations under 'Name' column
@@ -24,6 +25,7 @@ def station_names():
     return json.loads(f)
 
 
+# Check for active stations
 @app.route('/is_active_station')
 def is_active_station():
     # Pass the parameter from the URL and check if it matches against an active station
@@ -32,13 +34,16 @@ def is_active_station():
     return json.loads(r)
 
 
+# Check for inactive stations
 @app.route('/is_inactive_station')
 def is_inactive_station():
+    # Pass the parameter from the URL and check if it matches against an inactive station
     inactive_df = number_stations[number_stations['Status'] == 'Inactive']
     r = inactive_df.to_json()
     return json.loads(r)
 
 
+# Filter by station names
 @app.route('/filter_station_names/<name>')
 def filer_station_names(name):
     if name is None:
@@ -54,6 +59,23 @@ def filer_station_names(name):
     return json.loads(r)
 
 
+# Filter by station nicknames
+@app.route('/filter_station_nickname/<nickname>')
+def filer_station_nickname(nickname):
+    if nickname is None:
+        return jsonify({ 'error': 'Station nickname cannot be blank' })
+    # Pass the parameter from the URL and check if it matches against a known station nickname
+    f_nickname = number_stations[number_stations['Nickname'].str.contains(nickname)]
+    # If the DataFrame returns empty, send an error back to the client
+    if f_nickname.empty:
+        return jsonify({ 'error': 'That station does not exist'})
+    # If the DataFrame returns a response, convert the Series to a JSON string
+    r = f_nickname.to_json()
+    # Then convert the JSON string to a dict to properly format it when sending the response to the client
+    return json.loads(r)
+
+
+# Filter by station id's
 @app.route('/filter_by_id/<id>')
 def filter_by_id(id):
     if id is None:
@@ -69,6 +91,7 @@ def filter_by_id(id):
     return json.loads(r)
 
 
+# Filter by station locations
 @app.route('/filter_by_location/<loc>')
 def filter_by_location(loc):
     print(loc)
