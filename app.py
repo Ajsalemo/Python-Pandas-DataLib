@@ -1,20 +1,13 @@
 import pandas as pd
 from flask import Flask
 
+from data import data
+
 app = Flask(__name__)
+number_stations = data.number_stations
 
 @app.route('/')
 def index():
-    sample_dict = {
-        "Name": [
-                "Braund, Mr. Owen Harris",
-                "Allen, Mr. William Henry",
-                "Bonnell, Miss. Elizabeth",
-            ],
-            "Age": [22, 35, 58],
-            "Sex": ["male", "male", "female"],
-    }
-
-    df = pd.DataFrame(sample_dict)
+    df = pd.DataFrame(number_stations)
     print(df)
     return df.to_json()
