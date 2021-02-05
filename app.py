@@ -7,6 +7,10 @@ from tabulate import tabulate
 app = Flask(__name__)
 number_stations = pd.read_csv("./data/number_stations.csv")
 
+# Print tabular data
+def tabular_output(i):
+    print(tabulate(i, tablefmt='simple', headers=["ID", "Name", "Country", "Active Counterparts", "Inactive Counterparts", "Nickname", "Status", "Frequency", "Voice", "Emission Mode", "Location"], showindex='never'))  
+
 
 # List all stations
 @app.route('/')
@@ -32,7 +36,7 @@ def is_active_station():
     # Pass the parameter from the URL and check if it matches against an active station
     active_df = number_stations[number_stations['Status'] == 'Active']
     # Use tabulate to print the response to the terminal
-    print(tabulate(active_df, tablefmt='simple', headers=["ID", "Name", "Country", "Active Counterparts", "Inactive Counterparts", "Nickname", "Status", "Frequency", "Voice", "Emission Mode", "Location"], showindex='never'))  
+    tabular_output(active_df)
     r = active_df.to_json()
     return json.loads(r)
 
@@ -43,7 +47,7 @@ def is_inactive_station():
     # Pass the parameter from the URL and check if it matches against an inactive station
     inactive_df = number_stations[number_stations['Status'] == 'Inactive']
     # Use tabulate to print the response to the terminal
-    print(tabulate(inactive_df, tablefmt='simple', headers=["ID", "Name", "Country", "Active Counterparts", "Inactive Counterparts", "Nickname", "Status", "Frequency", "Voice", "Emission Mode", "Location"], showindex='never'))  
+    tabular_output(inactive_df)
     r = inactive_df.to_json()
     return json.loads(r)
 
@@ -56,7 +60,7 @@ def filer_station_names(name):
     # Pass the parameter from the URL and check if it matches against a known station name
     f_name = number_stations[number_stations['Name'] == name]
     # Use tabulate to print the response to the terminal
-    print(tabulate(f_name, tablefmt='simple', headers=["ID", "Name", "Country", "Active Counterparts", "Inactive Counterparts", "Nickname", "Status", "Frequency", "Voice", "Emission Mode", "Location"], showindex='never'))  
+    tabular_output(f_name)
     # If the DataFrame returns empty, send an error back to the client
     if f_name.empty:
         return jsonify({ 'error': 'That station does not exist'})
@@ -74,7 +78,7 @@ def filer_station_nickname(nickname):
     # Pass the parameter from the URL and check if it matches against a known station nickname
     f_nickname = number_stations[number_stations['Nickname'].str.contains(nickname)]
     # Use tabulate to print the response to the terminal
-    print(tabulate(f_nickname, tablefmt='simple', headers=["ID", "Name", "Country", "Active Counterparts", "Inactive Counterparts", "Nickname", "Status", "Frequency", "Voice", "Emission Mode", "Location"], showindex='never'))  
+    tabular_output(f_nickname)
     # If the DataFrame returns empty, send an error back to the client
     if f_nickname.empty:
         return jsonify({ 'error': 'That station does not exist'})
@@ -92,7 +96,7 @@ def filter_by_id(id):
     # Pass the parameter from the URL and check if it matches against a known station id
     f_id = number_stations[number_stations['ID'] == id]
     # Use tabulate to print the response to the terminal
-    print(tabulate(f_id, tablefmt='simple', headers=["ID", "Name", "Country", "Active Counterparts", "Inactive Counterparts", "Nickname", "Status", "Frequency", "Voice", "Emission Mode", "Location"], showindex='never'))  
+    tabular_output(f_id)
     # If the DataFrame returns empty, send an error back to the client
     if f_id.empty:
         return jsonify({ 'error': 'That ID does not exist'})
@@ -110,7 +114,7 @@ def filter_by_location(loc):
     # Pass the parameter from the URL and check if it matches against a known location - 'na=False' ignores any possibly empty values in the column to avoid throwing an error
     f_loc = number_stations[number_stations['Location'].str.contains(loc, na=False)]
     # Use tabulate to print the response to the terminal
-    print(tabulate(f_loc, tablefmt='simple', headers=["ID", "Name", "Country", "Active Counterparts", "Inactive Counterparts", "Nickname", "Status", "Frequency", "Voice", "Emission Mode", "Location"], showindex='never'))  
+    tabular_output(f_loc)
     # If the DataFrame returns empty, send an error back to the client
     if f_loc.empty:
         return jsonify({ 'error': 'That location does not exist'})
