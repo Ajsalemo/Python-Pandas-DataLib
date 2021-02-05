@@ -1,2 +1,24 @@
-﻿ID,Name,Country,Active Counterparts,Inactive counterparts
-E06,English Man 00000,Russia,"S06, M14, F01, F06","E17, G06, V06, V23"
+﻿ID,Name,Country,Active counterparts,Inactive counterparts,Nickname,Frequencies,Status,Voice,Emission mode,Location
+E06,English Man 00000,Russia,"S06, M14, F01, F06","E17, G06, V06, V23",English Man,,Active,Male,USB + carrier,"Moscow, Russia; Orenburg, Russia; Smolensk, Russia; Chita, Russia"
+E07,English Man 000 000,Russia,"V07, M12, XPA, XPA2, XPB","G07, S07, XP",English Man,,Active,Male,USB,"Moscow, Russia"
+E07a,English Man 000 000,Russia,,,English Man,,Active,Male,USB,"Moscow, Russia"
+E11,Oblique,Poland,"S11a, F03, P03","G11, S11, M03, F11",Oblique,,Active,Female,USB,"Warsaw, Poland"
+E17z,English Lady 0 0 0 0 0,Ukraine,S06s,,English Lady 0 0 0 0 0,,Active,Female,"USB + carrier, AM","Rivne, Ukraine"
+E25,Rebeat,Egypt,,,Rebeat,"6140, 9450, 18240",,"Female automated and Live Male, with Arabic accent, the last digit in the groups is inflected","AM, USB, USB + carrier",Egypt 
+E25a,Rebeat,Egypt,,,Rebeat,"6140, 9450",,"Female automated and Live Male, with Arabic accent, the last digit in the groups is inflected","AM, USB, USB + carrier",Egypt 
+E01,Ready Ready,,,M17,"Ready, Ready",,Inactive,Female,AM,
+E03,Lincolnshire Poacher,United Kingdom,,E03a,Lincolnshire Poacher,"5422, 5746, 6485, 6900, 6959, 7337, 7755, 8464, 9251, 10426, 11545, 12603, 13375, 14487, 15682, 16084, 16475",Inactive,Female,USB,Europe (UK or Cyprus)
+E03a,Cherry Ripe,,,E03,Cherry Ripe,,Inactive,Female,USB,Asia-Pacific (Guam or Australia)
+E05,The Counting Station,United States,,"G05, V05",The Counting Station,,Inactive,Female,"USB, USB + carrier","Warrenton, VA, USA; Frankfurt, Germany; others"
+E09,Magnetic Fields,,,V08,Magnetic Fields,"6645, 11290",Inactive,"Female, live",AM,
+E10,NATO Alphabet,Israel,,,NATO Alphabet,,Inactive,Female,USB + carrier,Israel
+E12,NNN,Austria,,"G12, V12, V18, M02",NNN,"	4024, 4644, 5072, 5177, 5821, 8180",Inactive,Female,AM,Austria
+E13,Five Dashes,Germany,,G13,Five Dashes,,Inactive,Female,USB,Germany
+E14,"Counting ""Control""",United States,,V14,"Counting ""Control""",,Inactive,Female,"USB, USB + carrier",United States
+E15,Nancy Adam Susan,,,,Nancy Adam Susan,,Inactive,"Male and female, live",,
+E16,Two Letter,Germany,,G16,Two Letter,,Inactive,Female,USB,(West) Germany
+E17,English Lady 00000,Russia*,"E06, S06, M14, F01, F06","G06, V06, V23",English Lady,,Inactive,Female,AM,Cuba
+E18,Fife Free,Bulgaria,,"G22, S04, M13",Fife Free,"6545, 8025",Inactive,Female,LSB,Bulgaria
+E21,4F Counting,United States,,,4F Counting,,Inactive,"Male, increased in pitch and tempo, with American accent",,USA
+E23,E23,Poland,,"G02, M04",E23,"	4832, 5340, 5748, 6200, 6507, 7250, 8188",Inactive,Female (same as E05),USB,Poland
+E25b,Rebeat,Egypt,,,Rebeat,"6140, 9450",Inactive,Male live,"AM, USB, USB + carrier",Egypt 
