@@ -122,3 +122,9 @@ def filter_by_location(loc):
     r = f_loc.to_json()
     # Then convert the JSON string to a dict to properly format it when sending the response to the client
     return json.loads(r)
+
+
+# Catch all HTTP 404's and return the below JSON message
+@app.errorhandler(404)
+def route_not_found(e):
+    return jsonify({ "error": "The specified route does not exist" })
